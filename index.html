@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123c8c">
+<title>PACO LINK — La communauté des élèves</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fc;color:#17243b;line-height:1.6}
+header{background:#123c8c;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0;font-size:30px}
+header p{margin:5px 0}
+nav{background:#09265c;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px}
+nav a{color:white;text-decoration:none;padding:7px 10px;border-radius:6px;font-size:14px}
+nav a:hover{background:#3158a4}
+main{max-width:950px;margin:auto;padding:16px}
+.hero{background:linear-gradient(135deg,#123c8c,#3979ed);color:white;padding:28px 20px;border-radius:16px;margin:15px 0}
+.hero h2{font-size:27px;line-height:1.25}
+button,.btn{border:0;border-radius:8px;padding:11px 15px;background:#1764df;color:white;cursor:pointer;font-weight:bold;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{background:#0c439f}
+input,textarea,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;margin:7px 0 12px;font:inherit}
+section{background:white;padding:20px;border-radius:13px;margin:18px 0;box-shadow:0 3px 12px #132c5510}
+h2{color:#123c8c}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{border:1px solid #e0e7f2;border-radius:10px;padding:15px;background:#fff}
+.card h3{margin-top:0}
+.tag{display:inline-block;background:#e8efff;color:#123c8c;padding:3px 9px;border-radius:20px;font-size:12px}
+.chatbox{height:220px;overflow-y:auto;background:#f3f6fc;border-radius:9px;padding:12px;margin-bottom:10px}
+.msg{background:white;border:1px solid #e0e7f2;padding:9px 11px;border-radius:9px;margin:7px 0;overflow-wrap:anywhere}
+.me{background:#dce9ff}
+.notice{background:#fff5d9;padding:12px;border-radius:8px;font-size:14px}
+footer{text-align:center;background:#09265c;color:white;padding:22px;margin-top:25px}
+small{color:#64748b}
+</style>
+</head>
+<body>
+<header>
+  <h1>🔗 PACO LINK</h1>
+  <p>Apprendre ensemble, réussir ensemble !</p>
+</header>
+
+<nav>
+  <a href="#accueil">Accueil</a>
+  <a href="#cours">Cours</a>
+  <a href="#professeur">Professeur IA</a>
+  <a href="#communaute">Communauté</a>
+  <a href="#apropos">À propos</a>
+</nav>
+
+<main>
+  <div class="hero" id="accueil">
+    <span class="tag">L'espace des élèves</span>
+    <h2>Bienvenue sur PACO LINK ! 🎓</h2>
+    <p>Découvre des cours, révise tes leçons et partage tes idées avec les autres élèves.</p>
+    <a class="btn" href="#cours" style="background:white;color:#123c8c">Découvrir les cours</a>
+  </div>
+
+  <section>
+    <h2>🔎 Rechercher une ressource</h2>
+    <input id="recherche" placeholder="Ex. : philosophie, anglais, mathématiques..." oninput="chercherCours()">
+    <small>Écris une matière pour trouver les ressources disponibles.</small>
+  </section>
+
+  <section id="cours">
+    <h2>📚 Cours et révisions</h2>
+    <p>Choisis une matière pour commencer à réviser.</p>
+    <div class="grid" id="listeCours">
+      <article class="card" data-mots="philosophie bac dissertation argument citation">
+        <span class="tag">Terminale</span>
+        <h3>🧠 Philosophie</h3>
+        <p>Découvre les notions, prépare tes dissertations et apprends à utiliser les citations.</p>
+        <button onclick="ouvrirCours('Philosophie','Pour réussir une dissertation : 1. Analyse le sujet. 2. Définis les mots importants. 3. Formule une problématique. 4. Construis un plan argumenté. 5. Rédige une conclusion qui répond au sujet.')">Réviser</button>
+      </article>
+      <article class="card" data-mots="anglais langue vocabulaire grammaire">
+        <span class="tag">Langues</span>
+        <h3>🇬🇧 Anglais</h3>
+        <p>Apprends du vocabulaire et entraîne-toi à construire des phrases.</p>
+        <button onclick="ouvrirCours('Anglais','Exemples : I am a student = Je suis élève. I want to learn English = Je veux apprendre l’anglais. I go to school = Je vais à l’école. Entraîne-toi à créer tes propres phrases.')">Réviser</button>
+      </article>
+      <article class="card" data-mots="mathématiques maths calcul équation">
+        <span class="tag">Sciences</span>
+        <h3>➗ Mathématiques</h3>
+        <p>Entraîne-toi au calcul et aux équations.</p>
+        <button onclick="ouvrirCours('Mathématiques','Exemple : résoudre 2x + 4 = 10. Soustrais 4 des deux côtés : 2x = 6. Divise par 2 : x = 3. Vérifie en remplaçant x par 3.')">Réviser</button>
+      </article>
+      <article class="card" data-mots="allemand deutsch langue vocabulaire">
+        <span class="tag">Langues</span>
+        <h3>🇩🇪 Allemand</h3>
+        <p>Apprends des phrases simples pour communiquer.</p>
+        <button onclick="ouvrirCours('Allemand','Hallo! = Bonjour ! Ich bin Schüler = Je suis élève. Ich lerne Deutsch = J’apprends l’allemand. Ich komme aus Mali = Je viens du Mali.')">Réviser</button>
+      </article>
+    </div>
+    <div id="detailCours" class="card" hidden>
+      <h3 id="titreCours"></h3>
+      <p id="texteCours"></p>
+      <button onclick="document.getElementById('detailCours').hidden=true">Fermer</button>
+    </div>
+  </section>
+
+  <section id="professeur">
+    <h2>🤖 Professeur IA</h2>
+    <p>Pose une question pour découvrir le fonctionnement du professeur de démonstration.</p>
+    <div class="notice">Important : cette version fonctionne avec des réponses préparées. Elle n'est pas encore connectée à une véritable intelligence artificielle.</div>
+    <div class="chatbox" id="messages" aria-live="polite">
+      <div class="msg"><b>PACO LINK :</b> Bonjour ! Je peux t'aider avec quelques questions scolaires. Essaie « philosophie », « anglais » ou « mathématiques ».</div>
+    </div>
+    <form id="chatForm">
+      <label for="question"><b>Ta question</b></label>
+      <input id="question" placeholder="Écris ta question..." required>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <section id="communaute">
+    <h2>👥 Communauté des élèves</h2>
+    <p>Écris une idée, une question ou un message pour tester l'espace communautaire.</p>
+    <div class="notice">Dans cette version, les messages restent sur cet appareil. Pour que tous les élèves les voient, il faudra ajouter une base de données en ligne.</div>
+    <form id="postForm">
+      <label for="nom"><b>Ton prénom ou pseudo</b></label>
+      <input id="nom" maxlength="40" placeholder="Ex. : Paco" required>
+      <label for="publication"><b>Ton message</b></label>
+      <textarea id="publication" maxlength="500" rows="3" placeholder="Partage une idée ou pose une question..." required></textarea>
+      <button type="submit">Publier un message</button>
+    </form>
+    <div id="publications"></div>
+  </section>
+
+  <section id="apropos">
+    <h2>🌍 À propos de PACO LINK</h2>
+    <p>PACO LINK est un projet destiné à rapprocher les élèves, faciliter le partage de connaissances et rendre l'apprentissage plus accessible.</p>
+    <p>Notre objectif : apprendre, s'entraider et progresser ensemble, au Mali et ailleurs.</p>
+    <p><b>Projet créé par Paco.</b></p>
+  </section>
+</main>
+
+<footer>
+  <b>🔗 PACO LINK</b>
+  <p>Apprendre ensemble, réussir ensemble !</p>
+  <small style="color:#dbe7ff">© PACO LINK — Projet éducatif</small>
+</footer>
+
+<script>
+function chercherCours(){
+  const q=document.getElementById('recherche').value.toLowerCase().trim();
+  document.querySelectorAll('#listeCours .card').forEach(c=>{
+    c.style.display=(c.innerText.toLowerCase().includes(q)||c.dataset.mots.includes(q))?'block':'none';
+  });
+}
+function ouvrirCours(titre,texte){
+  document.getElementById('titreCours').textContent=titre;
+  document.getElementById('texteCours').textContent=texte;
+  document.getElementById('detailCours').hidden=false;
+  document.getElementById('detailCours').scrollIntoView({behavior:'smooth',block:'center'});
+}
+document.getElementById('chatForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const champ=document.getElementById('question');
+  const q=champ.value.trim();
+  if(!q)return;
+  ajouterMessage('Toi',q,true);
+  const s=q.toLowerCase();
+  let r="Je suis encore un professeur de démonstration. Essaie de demander de l'aide en philosophie, en anglais ou en mathématiques.";
+  if(s.includes('bonjour')||s.includes('salut'))r="Bonjour ! 😊 Quelle matière veux-tu réviser aujourd'hui ?";
+  else if(s.includes('philo'))r="Pour la philosophie, commence par définir les termes du sujet, puis formule une problématique et construis un plan avec des arguments et des exemples.";
+  else if(s.includes('anglais')||s.includes('english'))r="Exemple en anglais : « I am a student » signifie « Je suis élève ». Essaie maintenant d'écrire une phrase en anglais.";
+  else if(s.includes('math')||s.includes('calcul')||s.includes('équation'))r="En mathématiques, avance étape par étape. Écris l'exercice complet pour que cette version de démonstration puisse essayer de t'orienter.";
+  else if(s.includes('allemand')||s.includes('deutsch'))r="En allemand : « Ich lerne Deutsch » signifie « J'apprends l'allemand ».";
+  else if(s.includes('bac'))r="Pour préparer le BAC, révise régulièrement, entraîne-toi avec des sujets et corrige tes erreurs.";
+  ajouterMessage('PACO LINK',r,false);
+  champ.value='';
+});
+function ajouterMessage(nom,texte,moi){
+  const d=document.createElement('div');
+  d.className='msg'+(moi?' me':'');
+  const b=document.createElement('b');
+  b.textContent=nom+': ';
+  d.appendChild(b);
+  d.appendChild(document.createTextNode(texte));
+  const box=document.getElementById('messages');
+  box.appendChild(d);
+  box.scrollTop=box.scrollHeight;
+}
+document.getElementById('postForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const nom=document.getElementById('nom').value.trim();
+  const texte=document.getElementById('publication').value.trim();
+  if(!nom||!texte)return;
+  const article=document.createElement('article');
+  article.className='card';
+  article.style.marginTop='12px';
+  const titre=document.createElement('b');
+  titre.textContent=nom;
+  const p=document.createElement('p');
+  p.textContent=texte;
+  const date=document.createElement('small');
+  date.textContent='Message publié sur cet appareil';
+  article.append(titre,p,date);
+  document.getElementById('publications').prepend(article);
+  document.getElementById('publication').value='';
+});
+</script>
+</body>
+</html>
